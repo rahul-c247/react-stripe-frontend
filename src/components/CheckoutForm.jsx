@@ -30,8 +30,6 @@ export default function PlanForm() {
 		}
 
 		setIsProcessing(false);
-		console.log('e',e);
-		console.log('res',res.json());
 	};
 
 	return (
