@@ -34,7 +34,7 @@ function Payment(props) {
 				currency:'usd',
 				description:`${details.title} - Quantity(${details.quantity})`,
 				productid:details.id,
-				customerEmail:customerEmail.email
+				/* customerEmail:customerEmail.email */
 			}),
 		}).then(async (r) => {
 			const { clientSecret } = await r.json();

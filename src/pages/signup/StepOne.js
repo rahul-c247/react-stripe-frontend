@@ -75,12 +75,12 @@ function StepOne(props){
     if(saveSignupData){
       localStorage.setItem('signupData', JSON.stringify(signupData))
       setTimeout(()=>{
-        /* props.setStepTwo(true) */
+        props.setStepTwo(true)
       },200)
 
     }
 
-    props.setStepTwo(true)
+    /* props.setStepTwo(true) */
 
     const result = await AuthSignup(signupData);
     console.log('result',result);

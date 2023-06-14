@@ -11,23 +11,18 @@ function StepThree(props){
 
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY)
 
-  const options = {
-    mode: 'payment',
-    amount: 5000,
-    currency: 'usd',
-  };
-	/* useEffect(() => {
-		fetch('http://localhost:8001/v1/stripe/config').then(async (r) => {
-			const { publishableKey } = await r.json();
-			setStripePromise(loadStripe(publishableKey));
-		});
-	}, []); */
-
 	useEffect(() => {
     setLoader(true)
-		fetch(`${process.env.REACT_APP_API_END_POINT}/stripe/create-payment-intent`, {
+    const plans = JSON.parse(localStorage.getItem('pricingData'));
+    console.log('plans',plans);
+		fetch('http://localhost:8001/v1/stripe/create-payment-intent', {
 			method: 'POST',
-			body: JSON.stringify(options),
+      headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+        price:`${plans.price}00`,
+        description:`${plans.type}`,
+				currency:'usd',
+      }),
 		}).then(async (res) => {
 			const { clientSecret } = await res.json();
 			setClientSecret(clientSecret);

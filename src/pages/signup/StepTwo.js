@@ -16,7 +16,7 @@ function StepTwo(props){
   
   const goToThirdStep =()=>{
     localStorage.setItem('pricingData', JSON.stringify({
-      price:plans == 0 ? '$49' : plans == 1 ? '$199' : '$149',
+      price:plans == 0 ? '49' : plans == 1 ? '199' : '149',
       type:plans == 0 ? 'Monthly' : plans == 1 ? 'Yearly' : '6 Months',
       freeTrial:plans == 0 ? '15 days' : plans == 1 ? '45 Days' : '30 Days',
     }))
